@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+###################################################################################
+# Desenvolvido por Daniel Pereira
+# Versão: 1.2
+###################################################################################
+
 from bs4 import BeautifulSoup
 import requests
 import re
