@@ -1,0 +1,1046 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_ZABBIX",
+      "label": "Zabbix",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "alexanderzobnin-zabbix-datasource",
+      "pluginName": "Zabbix"
+    }
+  ],
+  "__elements": [],
+  "__requires": [
+    {
+      "type": "datasource",
+      "id": "alexanderzobnin-zabbix-datasource",
+      "name": "Zabbix",
+      "version": "1.0.0"
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "8.4.5"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1649098725569,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "id": 2,
+      "options": {
+        "content": "<img \nsrc=\"data:image/png;base64, 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\" \nalt=\"some text\" \nwidth=350 \nheight=79>\n",
+        "mode": "html"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 3,
+        "w": 18,
+        "x": 6,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "content": "<div \nstyle=\"border-radius: 30px;\nfont-size:40px;\ntext-align:center;\nfont-family:Arial;\nbackground-image: linear-gradient(to right, #FF4500, #00FF00);\n;color:white\">STATUS IX BR",
+        "mode": "markdown"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "gridPos": {
+        "h": 4,
+        "w": 10,
+        "x": 0,
+        "y": 3
+      },
+      "id": 16,
+      "options": {
+        "content": "<div \nstyle=\"border-radius: 30px;\nfont-size:20px;\ntext-align:center;\nfont-family:Arial;\n;color:black\">LEGENDA<br>\n<br>\n\n<div \nstyle=\"border-radius: 30px;\nfont-size:15px;\ntext-align:center;\nfont-family:Arial;\n;color:black\">\n🟢 OPERACIONAL\n🟠 INDISPONIBILIDADE PARCIAL\n🔴 INDISPONIBILIDADE",
+        "mode": "html"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": ""
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "🟢"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "🟠"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "🔴"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#000000",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 19,
+        "w": 14,
+        "x": 10,
+        "y": 3
+      },
+      "id": 11,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "Outras Localidades"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:173",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/: Status(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/: Status(.*)/, $1)"
+            },
+            {
+              "$$hashKey": "object:174",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/.*-(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/.*-(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "TESTE STATUS IX"
+          },
+          "item": {
+            "filter": "/.*: Status/"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "IX - OUTRAS LOCALIDADES",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": true,
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "🟢"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "🟠"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "🔴"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#000000",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 10,
+        "x": 0,
+        "y": 7
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "São Paulo, SP"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:202",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/: Status(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/: Status(.*)/, $1)"
+            },
+            {
+              "$$hashKey": "object:203",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/.*-(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/.*-(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "TESTE STATUS IX"
+          },
+          "item": {
+            "filter": "/São Paulo, SP.*: Status/"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "IX - SÃO PAULO",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": true,
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "🟢"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "🟠"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "🔴"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#000000",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 10,
+        "x": 0,
+        "y": 12
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "Rio de Janeiro, RJ"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:231",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/: Status(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/: Status(.*)/, $1)"
+            },
+            {
+              "$$hashKey": "object:232",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/.*-(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/.*-(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "TESTE STATUS IX"
+          },
+          "item": {
+            "filter": "/Rio de Janeiro.*: Status/"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "IX - RIO DE JANEIRO",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": true,
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "orange",
+                  "index": 0,
+                  "text": "🟢"
+                },
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "🟠"
+                },
+                "2": {
+                  "color": "red",
+                  "index": 2,
+                  "text": "🔴"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "#000000",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 10,
+        "x": 0,
+        "y": 17
+      },
+      "id": 18,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.4.5",
+      "targets": [
+        {
+          "application": {
+            "filter": "Fortaleza, CE"
+          },
+          "datasource": {
+            "type": "alexanderzobnin-zabbix-datasource",
+            "uid": "${DS_ZABBIX}"
+          },
+          "functions": [
+            {
+              "$$hashKey": "object:260",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/: Status(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/: Status(.*)/, $1)"
+            },
+            {
+              "$$hashKey": "object:261",
+              "def": {
+                "category": "Alias",
+                "defaultParams": [
+                  "/(.*)/",
+                  "$1"
+                ],
+                "name": "replaceAlias",
+                "params": [
+                  {
+                    "name": "regexp",
+                    "type": "string"
+                  },
+                  {
+                    "name": "newAlias",
+                    "type": "string"
+                  }
+                ]
+              },
+              "params": [
+                "/.*-(.*)/",
+                "$1"
+              ],
+              "text": "replaceAlias(/.*-(.*)/, $1)"
+            }
+          ],
+          "group": {
+            "filter": "/.*/"
+          },
+          "host": {
+            "filter": "TESTE STATUS IX"
+          },
+          "item": {
+            "filter": "/Fortaleza.*: Status/"
+          },
+          "itemTag": {
+            "filter": ""
+          },
+          "options": {
+            "disableDataAlignment": false,
+            "showDisabledItems": false,
+            "skipEmptyValues": false,
+            "useZabbixValueMapping": false
+          },
+          "proxy": {
+            "filter": ""
+          },
+          "queryType": "0",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "table": {
+            "skipEmptyValues": false
+          },
+          "tags": {
+            "filter": ""
+          },
+          "trigger": {
+            "filter": ""
+          },
+          "triggers": {
+            "acknowledged": 2,
+            "count": true,
+            "minSeverity": 3
+          }
+        }
+      ],
+      "title": "IX - FORTALEZA",
+      "transformations": [
+        {
+          "id": "reduce",
+          "options": {
+            "labelsToFields": true,
+            "reducers": [
+              "last"
+            ]
+          }
+        }
+      ],
+      "type": "stat"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 35,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {},
+        "definition": "Zabbix - item",
+        "hide": 2,
+        "includeAll": true,
+        "label": "estado",
+        "multi": false,
+        "name": "estado",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "TESTE STATUS IX",
+          "item": "/.*/",
+          "itemTag": "",
+          "queryType": "item"
+        },
+        "refresh": 1,
+        "regex": "/Estado:(.*)IX:/",
+        "skipUrlSync": false,
+        "sort": 2,
+        "type": "query",
+        "datasource": "${DS_ZABBIX}"
+      },
+      {
+        "current": {},
+        "definition": "Zabbix - item",
+        "hide": 2,
+        "includeAll": true,
+        "label": "ix",
+        "multi": false,
+        "name": "ix",
+        "options": [],
+        "query": {
+          "application": "",
+          "group": "/.*/",
+          "host": "TESTE STATUS IX",
+          "item": "/$estado.*: Status/",
+          "itemTag": "",
+          "queryType": "item"
+        },
+        "refresh": 1,
+        "regex": "/\\((.*)\\):/",
+        "skipUrlSync": false,
+        "sort": 2,
+        "type": "query",
+        "datasource": "${DS_ZABBIX}"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": true
+  },
+  "timezone": "",
+  "title": "STATUS IX BR",
+  "uid": "6GbTRBs7z",
+  "version": 149,
+  "weekStart": ""
+}
