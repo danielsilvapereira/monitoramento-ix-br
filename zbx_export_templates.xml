@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2022-04-04T19:02:00Z</date>
+    <groups>
+        <group>
+            <name>Templates/Gubit/Python</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Status IX BR</template>
+            <name>Template Status IX BR</name>
+            <groups>
+                <group>
+                    <name>Templates/Gubit/Python</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <name>Json - Status IX BR</name>
+                    <type>EXTERNAL</type>
+                    <key>status-ix-br.py</key>
+                    <history>0</history>
+                    <trends>0</trends>
+                    <value_type>CHAR</value_type>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Discovery IX</name>
+                    <type>DEPENDENT</type>
+                    <key>discovery.ix</key>
+                    <delay>0</delay>
+                    <lifetime>0d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#IX_LOCALIZACAO} - {#IX_NOME}: Status</name>
+                            <type>DEPENDENT</type>
+                            <key>status.[{#IX_LOCALIZACAO}{#IX_NOME}]</key>
+                            <delay>0</delay>
+                            <history>1w</history>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>{#IX_GRUPO}</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <valuemap>
+                                <name>Status IX BR</name>
+                            </valuemap>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.[?(@['IX_NOME'] == '{#IX_NOME}' &amp;&amp; @['IX_LOCALIZACAO'] == '{#IX_LOCALIZACAO}')].IX_STATUS.first()</params>
+                                </step>
+                                <step>
+                                    <type>JAVASCRIPT</type>
+                                    <params>if (value == 'Operacional'){
+    return 0;}
+if (value == 'Indisponibilidade parcial'){
+   return 1;
+} else {
+    return 2;
+}</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>status-ix-br.py</key>
+                            </master_item>
+                        </item_prototype>
+                    </item_prototypes>
+                    <master_item>
+                        <key>status-ix-br.py</key>
+                    </master_item>
+                    <lld_macro_paths>
+                        <lld_macro_path>
+                            <lld_macro>{#IX_GRUPO}</lld_macro>
+                            <path>$.['IX_GRUPO']</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#IX_LOCALIZACAO}</lld_macro>
+                            <path>$.['IX_LOCALIZACAO']</path>
+                        </lld_macro_path>
+                        <lld_macro_path>
+                            <lld_macro>{#IX_NOME}</lld_macro>
+                            <path>$.['IX_NOME']</path>
+                        </lld_macro_path>
+                    </lld_macro_paths>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Status IX BR</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Operacional</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Indisponibilidade parcial</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Indisponibilidade</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
