@@ -26,7 +26,7 @@
 ```
 
 ```
-# Coloque-o no diretorio onde é armezenado os externalscripts do zabbix, caso nao tenha alterado, o padrão é:
+# Coloque-o no diretorio onde é armazenado os externalscripts do zabbix, caso nao tenha alterado, o padrão é:
     /usr/lib/zabbix/externalcripts
 ```
 
