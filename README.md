@@ -5,14 +5,32 @@
 
 ## Introdução
 
+### 📋 Pré-requisitos
+
+```
+# Python 3
+    (dnf|yum|apt-get) install python 3
+```
+```
+# Bibliotecas do Python
+    pip3 install re
+    pip3 install requests
+    pip3 install bs4
+```
+
 ## Instalação do script
 
-'''
-Baixe o script status-ix-br.py 
-'''
-'''
-Coloque-o no diretorio onde é armezenado os externalscripts do zabbix, caso nao tenha alterado, o padrão é em /usr/lib/zabbix/externalcripts
-'''
-## Instalação das dependencias
+```
+# Baixe o script status-ix-br.py 
+    wget https://raw.githubusercontent.com/danielsilvapereira/Monitoramento-Status_IX_BR/main/status-ix-br.py  
+```
+
+```
+# Coloque-o no diretorio onde é armezenado os externalscripts do zabbix, caso nao tenha alterado, o padrão é:
+    /usr/lib/zabbix/externalcripts
+```
 
 ## Importando o template
+```
+# Baixe o template e importe no Zabbix
+```
