@@ -7,6 +7,9 @@
 
 ## Instalação do script
 
+> Baixe o script status-ix-br.py 
+> Coloque-o no diretorio onde é armezenado os externalscripts do zabbix, caso nao tenha alterado, o padrão é em /usr/lib/zabbix/externalcripts
+
 ## Instalação das dependencias
 
 ## Importando o template
