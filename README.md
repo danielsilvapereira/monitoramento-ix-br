@@ -2,9 +2,6 @@
 
 ![Dashboard](https://user-images.githubusercontent.com/60305462/162094385-d89f4cca-a3f9-4252-887e-68b255576ea2.jpg)
 
-
-## Introdução
-
 ### 📋 Pré-requisitos
 
 ```
@@ -18,7 +15,7 @@
     pip3 install bs4
 ```
 
-## Instalação do script
+### Instalação
 
 ```
 # Baixe o script status-ix-br.py 
@@ -30,7 +27,7 @@
     /usr/lib/zabbix/externalcripts
 ```
 
-## Importando o template
+### Importando o template
 ```
 # Baixe o template e importe no Zabbix
 ```
